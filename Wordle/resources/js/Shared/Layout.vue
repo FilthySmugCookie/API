@@ -1,4 +1,12 @@
 <template>
+    <head>
+        <title>Project Failure</title>
+        <meta
+            type="description"
+            content="information about my app"
+            head-key="description"
+        />
+    </head>
     <section class="p-6 bg-gray-200">
         <header class="flex justify-between">
             <div class="flex items-center">
@@ -10,7 +18,7 @@
     </section>
 
     <section class="p-6">
-        <div class="max-w-3xl max-auto">
+        <div class="justify-items-center">
             <iframe
                 class="mb-6"
                 width="100%"
@@ -26,9 +34,10 @@
 
 <script>
 import Nav from "./Nav.vue";
+import { Head } from "@inertiajs/inertia-vue3";
 
 export default {
-    components: { Nav },
+    components: { Nav, Head },
     computed: {
         username() {
             return this.$page.props.auth.user.username;
