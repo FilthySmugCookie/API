@@ -4,9 +4,11 @@ import { createApp, h } from "vue";
 import Layout from "./Shared/Layout";
 
 createInertiaApp({
-    resolve: async (name) => {
-        let page = (await import(`./Pages/${name}`)).default;
-        page.layout ??= Layout;
+    resolve: (name) => {
+        let page = require(`./Pages/${name}`).default;
+        if (page.layout === undefined) {
+            page.layout = Layout;
+        }
         return page;
     },
 

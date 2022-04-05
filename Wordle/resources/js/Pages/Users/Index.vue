@@ -67,6 +67,7 @@
 import Pagination from "../../Shared/Pagination.vue";
 import { ref, watch } from "vue"; // watch helps keeping track of the search
 import { Inertia } from "@inertiajs/inertia";
+import debounce from "lodash/debounce";
 
 let props = defineProps({
     time: String,
@@ -76,14 +77,18 @@ let props = defineProps({
 
 let search = ref(props.filters.search);
 
-watch(search, (value) => {
-    Inertia.get(
-        "/users",
-        { search: value },
-        {
-            preserveState: true,
-            replace: true, // replaces each search in users search bar :D
-        }
-    );
-});
+watch(
+    search,
+    debounce(function (value) {
+        console.log("triggered");
+        Inertia.get(
+            "/users",
+            { search: value },
+            {
+                preserveState: true,
+                replace: true, // replaces each search in users search bar :D
+            }
+        );
+    }, 300)
+);
 </script>
