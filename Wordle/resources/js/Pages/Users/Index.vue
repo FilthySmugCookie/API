@@ -1,7 +1,20 @@
 <template>
     <head title="Vue - Users" />
-    <h1 class="font-bold text-3xl flex justify-center">Users</h1>
+    <div class="flex justify-center mb-6">
+        <div class="flex items-center mr-10">
+            <h1 class="font-bold text-3xl flex justify-center">Users</h1>
+            <Link href="/users/create" class="text-green-500 text-sm ml-2">
+                New User</Link
+            >
+        </div>
 
+        <input
+            v-model="search"
+            type="text"
+            placeholder="Search..."
+            class="border-2 rounded-lg"
+        />
+    </div>
     <!-- component -->
     <div class="flex justify-center">
         <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
@@ -51,6 +64,26 @@
     </div>
 </template>
 <script setup>
-import Pagination from "../Shared/Pagination.vue";
-defineProps({ time: String, users: Object });
+import Pagination from "../../Shared/Pagination.vue";
+import { ref, watch } from "vue"; // watch helps keeping track of the search
+import { Inertia } from "@inertiajs/inertia";
+
+let props = defineProps({
+    time: String,
+    users: Object,
+    filters: Object,
+});
+
+let search = ref(props.filters.search);
+
+watch(search, (value) => {
+    Inertia.get(
+        "/users",
+        { search: value },
+        {
+            preserveState: true,
+            replace: true, // replaces each search in users search bar :D
+        }
+    );
+});
 </script>
