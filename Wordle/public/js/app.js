@@ -24,8 +24,14 @@ var __default__ = {
       email: "",
       password: ""
     });
+
+    var submit = function submit() {
+      form.post("/login");
+    };
+
     var __returned__ = {
       form: form,
+      submit: submit,
       useForm: _inertiajs_inertia_vue3__WEBPACK_IMPORTED_MODULE_0__.useForm
     };
     Object.defineProperty(__returned__, '__isScriptSetup', {
@@ -105,7 +111,8 @@ __webpack_require__.r(__webpack_exports__);
   props: {
     time: String,
     users: Object,
-    filters: Object
+    filters: Object,
+    can: Object
   },
   setup: function setup(__props, _ref) {
     var expose = _ref.expose;
@@ -295,14 +302,14 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     title: "Login Page"
   }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("main", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("section", _hoisted_2, [_hoisted_3, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("form", {
     onSubmit: _cache[2] || (_cache[2] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)(function () {
-      return _ctx.submit && _ctx.submit.apply(_ctx, arguments);
+      return $setup.submit && $setup.submit.apply($setup, arguments);
     }, ["prevent"])),
     "class": "max-w-md mx-auto"
   }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_4, [_hoisted_5, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
     "onUpdate:modelValue": _cache[0] || (_cache[0] = function ($event) {
       return $setup.form.email = $event;
     }),
-    "class": "border border-gray-400 p-2 w-full",
+    "class": "border p-2 w-full rounded",
     type: "text",
     name: "email",
     id: "email",
@@ -319,7 +326,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     "onUpdate:modelValue": _cache[1] || (_cache[1] = function ($event) {
       return $setup.form.password = $event;
     }),
-    "class": "border border-gray-400 p-2 w-full",
+    "class": "border p-2 w-full rounded",
     type: "password",
     name: "password",
     id: "password"
@@ -625,28 +632,32 @@ var _hoisted_14 = {
 var _hoisted_15 = {
   "class": "text-gray-900 text-sm font-medium"
 };
-
-var _hoisted_16 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", {
+var _hoisted_16 = {
+  key: 0,
   "class": "px-6 py-4 whitespace-nowrap text-right text-sm font-bold"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
+};
+
+var _hoisted_17 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
   href: "'/users/${user.id}/edit'",
   "class": "text-indigo-600 hover:text-indigo-900"
-}, "Edit")], -1
+}, "Edit", -1
 /* HOISTED */
 );
 
-var _hoisted_17 = {
+var _hoisted_18 = [_hoisted_17];
+var _hoisted_19 = {
   style: {
     "margin-top": "400px"
   }
 };
 
-var _hoisted_18 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Refresh ");
+var _hoisted_20 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Refresh ");
 
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_Link = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("Link");
 
-  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, [_hoisted_1, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [_hoisted_4, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Link, {
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, [_hoisted_1, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [_hoisted_4, $props.can.createUser ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_Link, {
+    key: 0,
     href: "/users/create",
     "class": "text-green-500 text-sm ml-2"
   }, {
@@ -656,7 +667,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     _: 1
     /* STABLE */
 
-  })]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+  })) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
     "onUpdate:modelValue": _cache[0] || (_cache[0] = function ($event) {
       return $setup.search = $event;
     }),
@@ -670,7 +681,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       key: user.id
     }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", _hoisted_12, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_13, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_14, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_15, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(user.name), 1
     /* TEXT */
-    )])])]), _hoisted_16]);
+    )])])]), user.can.edit ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("td", _hoisted_16, _hoisted_18)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)]);
   }), 128
   /* KEYED_FRAGMENT */
   ))])])])])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Paginator "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)($setup["Pagination"], {
@@ -678,7 +689,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     "class": "mt-6"
   }, null, 8
   /* PROPS */
-  , ["links"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_17, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", null, "The current time is " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.time) + ".", 1
+  , ["links"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_19, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", null, "The current time is " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.time) + ".", 1
   /* TEXT */
   ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Link, {
     href: "/users",
@@ -686,7 +697,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     "preserve-scroll": ""
   }, {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-      return [_hoisted_18];
+      return [_hoisted_20];
     }),
     _: 1
     /* STABLE */
@@ -792,6 +803,8 @@ var _hoisted_3 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNod
 
 var _hoisted_4 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Settings");
 
+var _hoisted_5 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Log Out");
+
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_NavLink = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("NavLink");
 
@@ -809,7 +822,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   /* PROPS */
   , ["active"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_NavLink, {
     href: "/users",
-    active: _ctx.$page.component == 'Users'
+    active: _ctx.$page.component == 'Users/Index'
   }, {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
       return [_hoisted_3];
@@ -831,7 +844,17 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 
   }, 8
   /* PROPS */
-  , ["active"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Weir way to use a button "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <li>\r\n                <Link\r\n                    href=\"/logout\"\r\n                    class=\"text-blue-500 hover:underline\"\r\n                    method=\"post\"\r\n                    :data=\"{ foo: 'bar' }\"\r\n                    as=\"button\"\r\n                    >Log Out</Link\r\n                >\r\n            </li> ")])]);
+  , ["active"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_NavLink, {
+    href: "/logout",
+    method: "post"
+  }, {
+    "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+      return [_hoisted_5];
+    }),
+    _: 1
+    /* STABLE */
+
+  })]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Weird way to use a button "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <li>\r\n                <Link\r\n                    href=\"/logout\"\r\n                    class=\"text-blue-500 hover:underline\"\r\n                    method=\"post\"\r\n                    :data=\"{ foo: 'bar' }\"\r\n                    as=\"button\"\r\n                    >Log Out</Link\r\n                >\r\n            </li> ")])]);
 }
 
 /***/ }),
@@ -944,10 +967,7 @@ __webpack_require__.r(__webpack_exports__);
     }).use(plugin).component("Link", _inertiajs_inertia_vue3__WEBPACK_IMPORTED_MODULE_0__.Link) // Za link tova stava no ne hybavo vinagi da se pravi
     .component("Head", _inertiajs_inertia_vue3__WEBPACK_IMPORTED_MODULE_0__.Head) // Globally register head
     .mount(el);
-  },
-  title: function title(_title) {
-    return "Terminal Illness - ${title}";
-  } // dobavqsh nachaloto na title kum vsqka stranica
+  } //title: (title) => "Terminal Illness - ${title}", // dobavqsh nachaloto na title kum vsqka stranica
 
 });
 _inertiajs_progress__WEBPACK_IMPORTED_MODULE_1__.InertiaProgress.init({

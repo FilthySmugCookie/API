@@ -20,7 +20,7 @@ createInertiaApp({
             .mount(el);
     },
 
-    title: (title) => "Terminal Illness - ${title}", // dobavqsh nachaloto na title kum vsqka stranica
+    //title: (title) => "Terminal Illness - ${title}", // dobavqsh nachaloto na title kum vsqka stranica
 });
 
 InertiaProgress.init({

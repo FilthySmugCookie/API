@@ -7,7 +7,9 @@
                 >
             </li>
             <li>
-                <NavLink href="/users" :active="$page.component == 'Users'"
+                <NavLink
+                    href="/users"
+                    :active="$page.component == 'Users/Index'"
                     >Users</NavLink
                 >
             </li>
@@ -18,7 +20,10 @@
                     >Settings</NavLink
                 >
             </li>
-            <!-- Weir way to use a button -->
+            <li>
+                <NavLink href="/logout" method="post">Log Out</NavLink>
+            </li>
+            <!-- Weird way to use a button -->
             <!-- <li>
                 <Link
                     href="/logout"

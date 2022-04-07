@@ -14,7 +14,7 @@
 
                     <input
                         v-model="form.email"
-                        class="border border-gray-400 p-2 w-full"
+                        class="border p-2 w-full rounded"
                         type="text"
                         name="email"
                         id="email"
@@ -35,7 +35,7 @@
 
                     <input
                         v-model="form.password"
-                        class="border border-gray-400 p-2 w-full"
+                        class="border p-2 w-full rounded"
                         type="password"
                         name="password"
                         id="password"
@@ -72,4 +72,8 @@ let form = useForm({
     email: "",
     password: "",
 });
+
+let submit = () => {
+    form.post("/login");
+};
 </script>
